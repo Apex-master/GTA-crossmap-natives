@@ -1,48 +1,4 @@
-#pragma once
-#include "Invoker.hpp"
-#include "Types.hpp"
-#include "Common.hpp"
-
-// Generated 3-9-2018
-
-#define NanoVector Big::Nano::Vector3
-
-#define Vector3 NativeVector3
-
-//namespace NanoNatives
-//{
-//	/* For example:*/
-//
-//	//original
-//	//inline Vector3 GET_CAM_COORD(Cam cam) { return invoke<Vector3>(0xBAC038F7459AE5AE, cam); } // 0xBAC038F7459AE5AE 0x7C40F09C
-//
-//	//nano modified
-//		/// 
-
-//	}
-//
-//}
-
-#pragma warning(push)
-#pragma warning(disable : 4505)
-namespace Big
-{
-	template <typename R, typename ...TArgs>
-	inline R invoke(std::uint64_t hash, TArgs... args)
-	{
-		g_Invoker->BeginCall();
-		(g_Invoker->Push(args), ...);
-		g_Invoker->EndCall(hash);
-		return g_Invoker->GetReturn<R>();
-	}
-
-
-
-
-
-
-
-	namespace SYSTEM
+namespace SYSTEM
 	{
 
 		inline int CEIL(float value) { return invoke<int>(0x11E019C8F43ACC8A, value); } // 0x11E019C8F43ACC8A 0xD536A1DF
